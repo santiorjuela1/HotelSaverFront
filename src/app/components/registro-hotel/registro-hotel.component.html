@@ -1,0 +1,111 @@
+<div class="container">
+    <form class="registration-form" [formGroup]="formHotel" (ngSubmit)="initData()">
+      <h2>Registro hotel</h2>
+      <div class="nombre-id">
+        <div class="form-group" id="izquierda">
+          <label for="name">Nombre hotel:</label>
+          <input type="text" id="name" formControlName="nombre">
+          <div *ngIf="formHotel.get('nombre')?.invalid && (formHotel.get('nombre')?.dirty || formHotel.get('nombre')?.touched)">
+            <div *ngIf="formHotel.get('nombre')?.errors?.['required']">Nombre es requerido.</div>
+            <div *ngIf="formHotel.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 5 caracteres.</div>
+            <div *ngIf="formHotel.get('nombre')?.errors?.['maxlength']">El nombre no debe exceder los 20 caracteres.</div>
+          </div>
+        </div>
+
+        <div class="form-group" id="derecha">
+            <label for="codigo">Codigo:</label>
+            <input type="text" id="codigo" formControlName="id">
+          <div *ngIf="formHotel.get('id')?.invalid && (formHotel.get('id')?.dirty || formHotel.get('id')?.touched)">
+            <div *ngIf="formHotel.get('id')?.errors?.['required']">ID es requerido.</div>
+            <div *ngIf="formHotel.get('id')?.errors?.['minlength']">El ID debe tener al menos 5 caracteres.</div>
+            <div *ngIf="formHotel.get('id')?.errors?.['maxlength']">El ID no debe exceder los 20 caracteres.</div>
+         </div>
+        </div>
+      </div>
+
+      <div class="reserva-telefono" >
+        <div class="form-group" id="izquierda">
+            <label for="reserva">Capacidad de reserva:</label>
+            <input type="number" id="reserva" formControlName="capacidadReserva">
+            <div *ngIf="formHotel.get('capacidadReserva')?.invalid && (formHotel.get('capacidadReserva')?.dirty || formHotel.get('capacidadReserva')?.touched)">
+              <div *ngIf="formHotel.get('capacidadReserva')?.errors?.['required']">Capacidad de reserva es requerida.</div>
+            </div>
+          </div>
+
+          <div class="form-group" id="derecha">
+            <label for="telefono">Telefono:</label>
+            <input type="text" id="telefono" formControlName="telefono">
+            <div *ngIf="formHotel.get('telefono')?.invalid && (formHotel.get('telefono')?.dirty || formHotel.get('telefono')?.touched)">
+              <div *ngIf="formHotel.get('telefono')?.errors?.['required']">Teléfono es requerido.</div>
+              <div *ngIf="formHotel.get('telefono')?.errors?.['minlength']">El teléfono debe tener al menos 6 caracteres.</div>
+              <div *ngIf="formHotel.get('telefono')?.errors?.['maxlength']">El teléfono no debe exceder los 10 caracteres.</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="correo-habitaciones">
+        <div class="form-group" id="izquierda">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" formControlName="correo">
+            <div *ngIf="formHotel.get('correo')?.invalid && (formHotel.get('correo')?.dirty || formHotel.get('correo')?.touched)">
+              <div *ngIf="formHotel.get('correo')?.errors?.['required']">Correo es requerido.</div>
+              <div *ngIf="formHotel.get('correo')?.errors?.['minlength']">El correo debe tener al menos 8 caracteres.</div>
+              <div *ngIf="formHotel.get('correo')?.errors?.['maxlength']">El correo no debe exceder los 30 caracteres.</div>
+              <div *ngIf="formHotel.get('correo')?.errors?.['email']">El correo no es válido.</div>
+            </div>
+          </div>
+
+          <div class="form-group" id="derecha">
+            <label for="habitaciones">Numero habitaciones:</label>
+            <input type="number" id="habitaciones" formControlName="numeroHabitaciones">
+            <div *ngIf="formHotel.get('numeroHabitaciones')?.invalid && (formHotel.get('numeroHabitaciones')?.dirty || formHotel.get('numeroHabitaciones')?.touched)">
+              <div *ngIf="formHotel.get('numeroHabitaciones')?.errors?.['required']">Número de habitaciones es requerido.</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="precioNoche-contrasena">
+        <div class="form-group" id="izquierda">
+          <label for="precioNoche">Precio noche:</label>
+          <input type="number" id="precioNoche" formControlName="precioNoche">
+          <div *ngIf="formHotel.get('precioNoche')?.invalid && (formHotel.get('precioNoche')?.dirty || formHotel.get('precioNoche')?.touched)">
+            <div *ngIf="formHotel.get('precioNoche')?.errors?.['required']">Precio por noche es requerido.</div>
+          </div>
+        </div>
+
+        <div class="form-group" id="derecha">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" formControlName="contrasena">
+          <div *ngIf="formHotel.get('contrasena')?.invalid && (formHotel.get('contrasena')?.dirty || formHotel.get('contrasena')?.touched)">
+            <div *ngIf="formHotel.get('contrasena')?.errors?.['required']">Contraseña es requerida.</div>
+            <div *ngIf="formHotel.get('contrasena')?.errors?.['minlength']">La contraseña debe tener al menos 7 caracteres.</div>
+            <div *ngIf="formHotel.get('contrasena')?.errors?.['maxlength']">La contraseña no debe exceder los 15 caracteres.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="estrellas-direccion">
+        <div class="form-group" id="izquierda">
+          <label for="estrellas">Estrellas:</label>
+          <input type="number" id="estrellas" formControlName="estrellas">
+          <div *ngIf="formHotel.get('estrellas')?.invalid && (formHotel.get('estrellas')?.dirty || formHotel.get('estrellas')?.touched)">
+            <div *ngIf="formHotel.get('estrellas')?.errors?.['required']">Estrellas es requerido.</div>
+          </div>
+        </div>
+
+        <div class="form-group" id="derecha">
+          <label for="direccion">Direccion:</label>
+          <input type="text" id="direccion" formControlName="direccion">
+          <div *ngIf="formHotel.get('direccion')?.invalid && (formHotel.get('direccion')?.dirty || formHotel.get('direccion')?.touched)">
+              <div *ngIf="formHotel.get('direccion')?.errors?.['required']">Dirección es requerida.</div>
+              <div *ngIf="formHotel.get('direccion')?.errors?.['minlength']">La dirección debe tener al menos 10 caracteres.</div>
+              <div *ngIf="formHotel.get('direccion')?.errors?.['maxlength']">La dirección no debe exceder los 30 caracteres.</div>
+          </div>
+      </div>
+  </div>
+
+  <div class="button-class">
+      <button type="submit" class="buttonRegister" [disabled]="!isFormValid()">Register</button>
+  </div>
+</form>
+</div>

@@ -1,0 +1,71 @@
+<div class="container">
+  <form class="registration-form" [formGroup]="formUser" (ngSubmit)="initData()">
+      <h2>Registro usuario</h2>
+
+      <div class="name-documento-tipo">
+        <div class="form-group" id="izquierda">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" formControlName="nombre">
+            <div *ngIf="formUser.get('nombre')?.invalid && (formUser.get('nombre')?.dirty || formUser.get('contrasena')?.touched)">
+              <div *ngIf="formUser.get('nombre')?.errors?.['required']">Nombre is required</div>
+              <div *ngIf="formUser.get('nombre')?.errors?.['minlength']">Nombre must be at least 5 characters</div>
+              <div *ngIf="formUser.get('nombre')?.errors?.['maxlength']">Nombre must be at most 30 characters</div>
+            </div>
+          </div>
+          <div class="form-group" id="derecha">
+            <label for="document-type">Tipo de documento:</label>
+            <select id="document-type" formControlName="tipoDocumento">
+              <option value="cedula">C.C</option>
+              <option value="tarjeta-identidad">T.I</option>
+            </select>
+          </div>
+      </div>
+
+      <div class="numero-documento-telefono" >
+        <div class="form-group" id="izquierda">
+            <label for="document">Numero de documento:</label>
+            <input type="text" id="document" formControlName="documento">
+            <div *ngIf="formUser.get('documento')?.invalid && (formUser.get('documento')?.dirty || formUser.get('documento')?.touched)">
+              <div *ngIf="formUser.get('documento')?.errors?.['required']">Documento is required</div>
+              <div *ngIf="formUser.get('documento')?.errors?.['maxlength']">Documento must be at most 10 characters</div>
+              <div *ngIf="formUser.get('documento')?.errors?.['minlength']">Documento must be at least 7 characters</div>
+            </div>
+          </div>
+
+          <div class="form-group" id="derecha">
+            <label for="telefono">Telefono:</label>
+            <input type="text" id="Telefono" formControlName="telefono">
+            <div *ngIf="formUser.get('telefono')?.invalid && (formUser.get('telefono')?.dirty || formUser.get('telefono')?.touched)">
+              <div *ngIf="formUser.get('telefono')?.errors?.['required']">Telefono is required</div>
+              <div *ngIf="formUser.get('telefono')?.errors?.['minlength']">Telefono must be at least 7 characters</div>
+              <div *ngIf="formUser.get('telefono')?.errors?.['maxlength']">Teléfono must be at most 10 characters</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="contrasena-correo">
+        <div class="form-group" id="izquierda">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" formControlName="contrasena">
+            <div *ngIf="formUser.get('contrasena')?.invalid && (formUser.get('contrasena')?.dirty || formUser.get('contrasena')?.touched)">
+              <div *ngIf="formUser.get('contrasena')?.errors?.['required']">Contraseña is required</div>
+              <div *ngIf="formUser.get('contrasena')?.errors?.['minlength']">Contraseña must be at least 7 characters</div>
+              <div *ngIf="formUser.get('contrasena')?.errors?.['maxlength']">Contrasena must be at most 20 characters</div>
+            </div>
+          </div>
+          <div class="form-group" id="derecha">
+            <label for="correo">Correo:</label>
+            <input type="text" id="correo" formControlName="correo">
+            <div *ngIf="formUser.get('correo')?.invalid && (formUser.get('correo')?.dirty || formUser.get('correo')?.touched)">
+              <div *ngIf="formUser.get('correo')?.errors?.['required']">Correo is required</div>
+              <div *ngIf="formUser.get('correo')?.errors?.['email']">Invalid email format</div>
+              <div *ngIf="formUser.get('correo')?.errors?.['maxlength']">Correo must be at most 20 characters</div>
+              <div *ngIf="formUser.get('correo')?.errors?.['minlength']">Correo must be at least 5 characters</div>
+            </div>
+          </div>
+      </div>
+      <div class="button-class">
+        <button type="submit" class="buttonRegister" [disabled]="!isFormValid()">Register</button>
+      </div>
+    </form>
+  </div>
