@@ -1,0 +1,42 @@
+<div class="reservation-form">
+  <form [formGroup]="formReserva" (ngSubmit)="createReservation()">
+    <label for="fechaInicio">Fecha de Inicio:</label>
+    <input type="date" id="fechaInicio" formControlName="fechaInicio" required>
+
+    <label for="fechaFin">Fecha de Fin:</label>
+    <input type="date" id="fechaFin" formControlName="fechaFin" required>
+
+    <label for="numeroHabitaciones">Número de Habitaciones:</label>
+    <input type="number" id="numeroHabitaciones" formControlName="numeroHabitaciones" required>
+
+    <div  class="new-form" *ngFor="let formGroup of nuevoFormClient; let i = index" [formGroup]="formGroup.formGroup">
+      <div class="linea-horizontal"></div>
+      <div class="documento-button">
+        <label for="documento{{ i }}">
+          Documento Cliente {{ i + 1 }}:
+        </label>
+        <button type="button" class="button-eliminar" (click)="removeCliente(i)">X</button>
+      </div>
+
+      <input type="text" id="documento{{ i }}" formControlName="documento" required
+             [class.invalid]="formGroup.formGroup.get('documento')?.invalid && formGroup.formGroup.get('documento')?.touched">
+      <div class="error-message" *ngIf="formGroup.formGroup.get('documento')?.invalid && formGroup.formGroup.get('documento')?.touched">
+        <div *ngIf="formGroup.formGroup.get('documento')?.errors?.['required']">Documento es obligatorio</div>
+        <div *ngIf="formGroup.formGroup.get('documento')?.errors?.['minlength']">El documento debe de tener al menos 7 caracteres</div>
+        <div *ngIf="formGroup.formGroup.get('documento')?.errors?.['maxlength']">El documento debe de tener maximo 10 caracteres</div>
+      </div>
+
+      <label for="tipoDocumento{{ i }}">Tipo de Documento Cliente {{ i + 1 }}:</label>
+      <select class="selector"   id="tipoDocumento{{ i }}" formControlName="tipoDocumento" required>
+        <option value="CC">Cedula</option>
+        <option value="TI">Tarjeta de identidad</option>
+      </select>
+
+    </div>
+
+    <button type="button" (click)="addCliente()">Agregar acompañante</button>
+    <button type="submit" [disabled]="!formReserva.valid">Crear reserva</button>
+  </form>
+</div>
+
+

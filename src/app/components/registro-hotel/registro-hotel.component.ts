@@ -12,6 +12,8 @@ import { HotelServiceService } from 'src/app/services/hotel-service.service';
 })
 export class RegistroHotelComponent {
   public allHotels: Hotel[] = [];
+  public correoExists: boolean = false;
+  public idExists: boolean = false;
 
    public formHotel  = new FormGroup({
      id: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
@@ -31,13 +33,15 @@ export class RegistroHotelComponent {
    }
 
    public initData() {
-     const correoRepetido: boolean = this.checkCorreo();
-
-     if (correoRepetido) {
-       return;
-     }
-
      if (this.isFormValid()) {
+      if(this.checkCorreo()){
+        this.correoExists = true;
+        return;
+      }
+      else if(this.checkId()){
+        this.idExists = true;
+        return;
+      }
        const hotel: Hotel = {
          id: this.formHotel.get('id')?.value,
          nombre: this.formHotel.get('nombre')?.value,
@@ -88,6 +92,17 @@ export class RegistroHotelComponent {
        return true;
      }
      return false;
+   }
+
+   public checkId(){
+    const hotelID = this.formHotel.get('id')?.value;
+
+    const hotelAlreadyExists = this.allHotels.find(hotel => hotel.id == hotelID);
+
+    if(hotelAlreadyExists){
+      return true;
+    }
+    return false;
    }
 
    public isFormValid(): boolean {

@@ -107,5 +107,7 @@
   <div class="button-class">
       <button type="submit" class="buttonRegister" [disabled]="!isFormValid()">Register</button>
   </div>
+  <div *ngIf="idExists" class="wrong-credentials">El id ya existe. Intente con otro</div>
+  <div *ngIf="correoExists" class="wrong-credentials">El correo ya existe. Intente con otro</div>
 </form>
 </div>

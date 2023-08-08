@@ -1,3 +1,12 @@
 .tabla{
     margin-top: 70px;
 }
+.button{
+    width: 100%;
+    padding: 8px;
+    background-color: #19d232;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

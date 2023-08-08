@@ -1,17 +1,29 @@
 <div class="login-container">
-    <form class="login-form">
-        <h1>Hotel</h1>
-      <h2>Iniciar sesion</h2>
-      <div class="form-group">
-        <label for="username">Correo electronico: </label>
-        <input type="text" id="username" name="username" required>
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="loginHotel()">
+    <h1>Hotel</h1>
+    <h2>Iniciar sesión</h2>
+    <div class="form-group">
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" formControlName="correo" required>
+      <div *ngIf="loginForm.get('correo')?.invalid && (loginForm.get('correo')?.dirty || loginForm.get('correo')?.touched)">
+        <div *ngIf="loginForm.get('correo')?.errors?.['required']">Correo electrónico es obligatorio</div>
+        <div *ngIf="loginForm.get('correo')?.errors?.['email']">Formato de correo electrónico inválido</div>
+        <div *ngIf="loginForm.get('correo')?.errors?.['minlength']">Correo electrónico debe tener al menos 5 caracteres</div>
+        <div *ngIf="loginForm.get('correo')?.errors?.['maxlength']">Correo electrónico debe tener como máximo 30 caracteres</div>
       </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" formControlName="contrasena" required>
+      <div *ngIf="loginForm.get('contrasena')?.invalid && (loginForm.get('contrasena')?.dirty || loginForm.get('contrasena')?.touched)">
+        <div *ngIf="loginForm.get('contrasena')?.errors?.['required']">Contraseña es obligatoria</div>
+        <div *ngIf="loginForm.get('contrasena')?.errors?.['minlength']">Contraseña debe tener al menos 7 caracteres</div>
+        <div *ngIf="loginForm.get('contrasena')?.errors?.['maxlength']">Contraseña debe tener como máximo 20 caracteres</div>
       </div>
-      <button type="submit">Iniciar sesion</button>
-      <button id="buttonRegistro" (click)="redirectToRegister()" >Registrarse</button>
-    </form>
-  </div>
+    </div>
+    <button type="submit">Iniciar sesión</button>
+    <button id="buttonRegistro" (click)="redirectToRegister()">Registrarse</button>
+    <div class="wrong-credentials" *ngIf="wrongCredentials">Este hotel no existe. Intente de nuevo.</div>
+  </form>
+</div>
   

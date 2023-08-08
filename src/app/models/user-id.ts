@@ -1,4 +1,4 @@
 export interface UserID {
-    documento: any;
-    tipoDocumento : any;
+    documento: number;
+    tipoDocumento : string;
 }

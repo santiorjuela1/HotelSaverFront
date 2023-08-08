@@ -17,6 +17,6 @@ export class DefineUsersComponent {
   }
 
   public sendUserLogin(){
-    this.router.navigate(['/login'])
+    this.router.navigate(['/loginuser'])
   }
 }

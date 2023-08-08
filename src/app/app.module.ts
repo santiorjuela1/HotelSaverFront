@@ -8,7 +8,6 @@ import { LogInHotelComponent } from './components/log-in-hotel/log-in-hotel.comp
 import { RegistroHotelComponent } from './components/registro-hotel/registro-hotel.component';
 import { ClientComponentComponent } from './components/client-component/client-component.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +15,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HotelesComponent } from './components/hoteles/hoteles.component'; 
 import {MatTableModule} from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import { HotelComponent } from './components/hotel/hotel.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -25,20 +29,24 @@ import {MatTableModule} from '@angular/material/table';
     LogInHotelComponent,
     RegistroHotelComponent,
     ClientComponentComponent,
-    HotelesComponent
+    HotelesComponent,
+    ReservaComponent,
+    LoginUserComponent,
+    HotelComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatInputModule,
     RouterModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,14 +12,16 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class RegistroUserComponent {
 
   public allUsers: User[] = [];
+  public correoExists: boolean = false;
+  public documentoExists: boolean = false;
 
   public formUser = new FormGroup({
-    documento: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]),
+    documento: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern('^[0-9]+$')]),
     tipoDocumento: new FormControl('', Validators.required),
     nombre: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
     correo: new FormControl('', [Validators.required, Validators.email, Validators.minLength(5),Validators.maxLength(30)]),
     contrasena: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(20)]),
-    telefono: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10)])
+    telefono: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern('^[0-9]+$')])
   })
 
   constructor(private service: UserServiceService, private router : Router) {
@@ -27,17 +29,21 @@ export class RegistroUserComponent {
   }
 
   public initData() {
-    const correoRepetido: boolean = this.checkCorreo();
-
-    if (correoRepetido) {
-      return;
-    }
-
     if (this.isFormValid()) {
+      if (this.checkCorreo()) {
+        this.correoExists = true;
+        console.log('correo exists');
+        return;
+      }
+      if (this.checkDocumento()) {
+        this.documentoExists = true;
+        console.log('documento exists');
+        return;
+      }
       const user: User = {
         userID: {
-          documento: this.formUser.get('documento')?.value,
-          tipoDocumento: this.formUser.get('tipoDocumento')?.value
+          documento: parseInt(this.formUser.get('documento')?.value!),
+          tipoDocumento: this.formUser.get('tipoDocumento')?.value || ''
         },
         nombre: this.formUser.get('nombre')?.value,
         correo: this.formUser.get('correo')?.value,
@@ -73,11 +79,8 @@ export class RegistroUserComponent {
 
   public checkCorreo() {
     const correo = this.formUser.get('correo')?.value;
-
     const userWithEmail = this.allUsers.find(user => user.correo === correo);
-
-    if (userWithEmail) {
-      console.log("Use another gmail");
+    if (userWithEmail){
       return true;
     }
     return false;
@@ -87,7 +90,16 @@ export class RegistroUserComponent {
     return this.formUser.valid;
   }
 
+  public checkDocumento(){
+    const documentoForm = this.formUser.get('documento')?.value;
+    const userWithDocumento = this.allUsers.find(user => user.userID?.documento == documentoForm);
+    if(userWithDocumento){
+      return true   
+     }
+    return false;
+  }
+
   public redirectLogin(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['/loginuser']);
   }
 }

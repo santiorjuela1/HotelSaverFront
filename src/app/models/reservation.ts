@@ -5,9 +5,9 @@ export interface Reservation {
     reservationID: ReservationID;
     fechaInicio: string;
     fechaFin: string;
-    numeroHabitaciones: number;
+    numeroHabitaciones: number | null;
     cedulas: Cliente[];
-    hotelID: string;
-    documento: number;
-    tipoDocumento: string;
+    hotelID : string,
+    documento : number,
+    tipoDocumento : string
 }

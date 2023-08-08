@@ -32,4 +32,8 @@ export class UserServiceService {
   public getAllUsers(): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8080/apiUsers/v1' + '/getAllUsers');
   }
+
+  public getUserByCorreo(correo: any) {
+    return this.http.get(`http://localhost:8080/apiUsers/v1/getUserByCorreo/${correo}`);
+  }
 }

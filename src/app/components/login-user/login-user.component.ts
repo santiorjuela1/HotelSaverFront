@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Hotel } from 'src/app/models/hotel';
-import { HotelServiceService } from 'src/app/services/hotel-service.service';
+import { User } from 'src/app/models/user';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
-  selector: 'app-log-in-hotel',
-  templateUrl: './log-in-hotel.component.html',
-  styleUrls: ['./log-in-hotel.component.css']
+  selector: 'app-login-user',
+  templateUrl: './login-user.component.html',
+  styleUrls: ['./login-user.component.css']
 })
-export class LogInHotelComponent {
-  allHotels : Hotel []= []
+export class LoginUserComponent {
+  allUsers : User []= []
   public wrongCredentials : boolean = false;
-  hotel !: Hotel;
+  user !: User;
 
   public loginForm = new FormGroup({
     correo : new FormControl('', [Validators.required, Validators.email, Validators.minLength(5),Validators.maxLength(30)]),
@@ -20,14 +20,14 @@ export class LogInHotelComponent {
   })
 
  
-  constructor(private router : Router, private service : HotelServiceService ){
+  constructor(private router : Router, private service : UserServiceService ){
     this.getAllUsers();
   }
 
   public getAllUsers() {
-    this.service.getAllHotels().subscribe(
-      (response: Hotel[]) => {
-        this.allHotels = response;
+    this.service.getAllUsers().subscribe(
+      (response: User[]) => {
+        this.allUsers = response;
       },
       (error) => {
         console.error('Error fetching users:', error);
@@ -35,11 +35,11 @@ export class LogInHotelComponent {
     );
   }
 
-  loginHotel(){
+  loginUser(){
     if(this.loginForm.valid){
       const correo = this.loginForm.get('correo')?.value;
       const contrasena = this.loginForm.get('contrasena')?.value;
-      if(this.rightCredentials(correo, contrasena)){
+      if(this.checkCredentials(correo, contrasena)){
         this.redirectHotels(correo!);
       }
       else{
@@ -48,26 +48,23 @@ export class LogInHotelComponent {
     }
   }
   
-  public rightCredentials(correo : any, contrasena :any): boolean{
-    for(const eachHotel of this.allHotels){
-      if(eachHotel.correo === correo && eachHotel.contrasena === contrasena){
+  public checkCredentials(correo : any, contrasena :any): boolean{
+    for(const eachUser of this.allUsers){
+      if(eachUser.correo === correo && eachUser.contrasena === contrasena){
         return true;
       }
     }
     return false;
   }
 
-  public redirectToRegister(){
-    this.router.navigate(['/registrohotel'])
+  public redirectRegistroUser(){
+    this.router.navigate(['/registroUser'])
   }
 
-
   public redirectHotels(correo : string) {
-    this.router.navigate(['/hotel'], {
+    this.router.navigate(['/hoteles'], {
       queryParams: { correo : correo }
     });
   }
 
 }
-
-

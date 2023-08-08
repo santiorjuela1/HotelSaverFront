@@ -1,5 +1,5 @@
 export interface Cliente {
-    documento: number;
+    documento: string;
     tipoDocumento: string;
     hotelID: string;
     documentoUser: number;

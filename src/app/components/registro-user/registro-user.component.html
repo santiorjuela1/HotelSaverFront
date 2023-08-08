@@ -24,7 +24,7 @@
       <div class="numero-documento-telefono" >
         <div class="form-group" id="izquierda">
             <label for="document">Numero de documento:</label>
-            <input type="text" id="document" formControlName="documento">
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" id="document" formControlName="documento">
             <div *ngIf="formUser.get('documento')?.invalid && (formUser.get('documento')?.dirty || formUser.get('documento')?.touched)">
               <div *ngIf="formUser.get('documento')?.errors?.['required']">Documento is required</div>
               <div *ngIf="formUser.get('documento')?.errors?.['maxlength']">Documento must be at most 10 characters</div>
@@ -34,7 +34,7 @@
 
           <div class="form-group" id="derecha">
             <label for="telefono">Telefono:</label>
-            <input type="text" id="Telefono" formControlName="telefono">
+            <input type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" id="Telefono" formControlName="telefono">
             <div *ngIf="formUser.get('telefono')?.invalid && (formUser.get('telefono')?.dirty || formUser.get('telefono')?.touched)">
               <div *ngIf="formUser.get('telefono')?.errors?.['required']">Telefono is required</div>
               <div *ngIf="formUser.get('telefono')?.errors?.['minlength']">Telefono must be at least 7 characters</div>
@@ -67,5 +67,7 @@
       <div class="button-class">
         <button type="submit" class="buttonRegister" [disabled]="!isFormValid()">Register</button>
       </div>
+      <div *ngIf="correoExists" class="bad-credentials">Ese correo ya existe. Intente otro credencial</div>
+    <div *ngIf="documentoExists" class="bad-credentials">Ese  documento ya existe. Intente otro credencial</div>
     </form>
   </div>

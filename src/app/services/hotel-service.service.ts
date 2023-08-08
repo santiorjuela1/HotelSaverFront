@@ -31,4 +31,8 @@ export class HotelServiceService {
   public getAllHotels(): Observable<Hotel[]>{
     return this.http.get<Hotel[]>(this.urlHotel + '/getAllHotels');
   }
+
+  public getHotelByCorreo(correo: string): Observable<Hotel> {
+    return this.http.get<Hotel>(`${this.urlHotel}/getHotelByCorreo/${correo}`);
+  }
 }
