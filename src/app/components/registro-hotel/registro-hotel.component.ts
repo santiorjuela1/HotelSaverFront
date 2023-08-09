@@ -113,4 +113,5 @@ export class RegistroHotelComponent {
      this.router.navigate(['/loginhotel']);
   }
 
+
 }

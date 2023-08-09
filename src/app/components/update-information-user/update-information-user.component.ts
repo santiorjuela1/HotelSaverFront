@@ -87,4 +87,8 @@ export class UpdateInformationUserComponent implements OnInit, OnDestroy {
       )
     );
   }
+
+  public cancelar(){
+    this.router.navigate(['/inicio']);
+  }
 }

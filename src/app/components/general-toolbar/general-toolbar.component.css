@@ -13,4 +13,9 @@
 
   .welcomeMessage{
     margin-left: 5vh;
+    box-shadow: none;
+    border: none;
+    background-color: #19d232;
+    color: white;
+    font-weight: 800;
   }

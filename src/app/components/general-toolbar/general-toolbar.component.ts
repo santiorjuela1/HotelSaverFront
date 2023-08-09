@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-general-toolbar',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class GeneralToolbarComponent {
 
+  constructor(private router : Router){}
+
+  publicSendInicio(){
+    this.router.navigate(['/inicio'])
+  }
 }

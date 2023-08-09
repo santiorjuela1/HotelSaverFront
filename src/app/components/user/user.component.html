@@ -1,34 +1,33 @@
 <app-user-tool-bar></app-user-tool-bar>
 <div class="container">
-    <div *ngIf="user" class="hotel-profile">
-      <h2>Informacion del hotel</h2>
-      <p><strong>Nombre hotel:</strong> {{ user.nombre }}</p>
-      <p><strong>Correo:</strong> {{ user.correo }}</p>
-      <p><strong>Telefono:</strong> {{ user.telefono }}</p>
-      <p><strong>Contaseña:</strong> {{ user.contrasena | passwordPipe}}</p>
-  
-      <button class="button-update" (click)="updateUser()">Actualizar informacion del usuario</button>
-    </div>
-  
-    <div *ngIf="!user">
-      <p>Loading user information...</p>
-    </div>
-  
-    <div *ngIf="reservations.length > 0" class="reservations">
-      <h2>Reservations</h2>
-      <ul>
-        <li *ngFor="let reservation of reservations">
-          <p><strong>Documento usuario:</strong> {{ reservation.reservationID.userID.documento }}</p>
-          <p><strong>Tipo documento usuario:</strong> {{ reservation.reservationID.userID.tipoDocumento }}</p>
-          <p><strong>Fecha de inicio:</strong> {{ reservation.fechaInicio }}</p>
-          <p><strong>Fecha final:</strong> {{ reservation.fechaFin }}</p>
-          <p><strong>Numero de habitaciones:</strong> {{ reservation.numeroHabitaciones }}</p>
-        </li>
-      </ul>
-    </div>
-  
-    <div *ngIf="reservations.length === 0" class="reservations">
-      <p>No reservations found.</p>
-    </div>
+  <div *ngIf="user" class="hotel-profile">
+    <h2>Informacion del hotel</h2>
+    <p><strong>Nombre hotel:</strong> {{ user.nombre }}</p>
+    <p><strong>Correo:</strong> {{ user.correo }}</p>
+    <p><strong>Telefono:</strong> {{ user.telefono }}</p>
+    <p><strong>Contaseña:</strong> {{ user.contrasena! | passwordPipe }}</p>
+
+    <button class="button-update" (click)="updateUser()">Actualizar informacion del usuario</button>
   </div>
-  
+
+  <div *ngIf="!user">
+    <p>Loading user information...</p>
+  </div>
+
+  <div *ngIf="reservations.length > 0" class="reservations">
+    <h2>Reservations</h2>
+    <ul>
+      <li *ngFor="let reservation of reservations">
+        <p><strong>Documento usuario:</strong> {{ reservation.reservationID.userID.documento }}</p>
+        <p><strong>Tipo documento usuario:</strong> {{ reservation.reservationID.userID.tipoDocumento }}</p>
+        <p><strong>Fecha de inicio:</strong> {{ reservation.fechaInicio }}</p>
+        <p><strong>Fecha final:</strong> {{ reservation.fechaFin }}</p>
+        <p><strong>Numero de habitaciones:</strong> {{ reservation.numeroHabitaciones }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="reservations.length === 0" class="reservations">
+    <p>No reservations found.</p>
+  </div>
+</div>

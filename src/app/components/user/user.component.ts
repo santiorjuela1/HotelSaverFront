@@ -63,4 +63,5 @@ export class UserComponent implements OnInit{
       queryParams : { correo : this.userCorreo}
     });
   }
+
 }

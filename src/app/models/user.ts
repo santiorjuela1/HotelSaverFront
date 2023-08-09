@@ -3,10 +3,10 @@ import { UserID } from "./user-id";
 
 export interface User {
     userID?: UserID;
-    nombre?: any;
-    correo?: any;
-    contrasena?: any;
-    telefono?: any;
+    nombre?: string;
+    correo?: string;
+    contrasena?: string;
+    telefono?: string;
     resevations?: Reservation[];
 }
 

@@ -42,3 +42,20 @@
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
     }
+
+
+.button-update {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+
+.button-update:hover {
+  background-color: #c9302c;
+}

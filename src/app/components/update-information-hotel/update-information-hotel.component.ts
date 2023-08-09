@@ -74,4 +74,8 @@ export class UpdateInformationHotelComponent implements OnInit {
         }
       )
     }
+
+    public cancelar(){
+      this.router.navigate(['/inicio']);
+    }
 }

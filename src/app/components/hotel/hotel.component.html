@@ -13,7 +13,6 @@
       <p><strong>Contaseña:</strong> {{ hotel.contrasena | passwordPipe}}</p>
   
       <button class="button-update" (click)="updateHotel()">Update Hotel Information</button>
-      <button class="button-delete" (click)="deleteHotel()">Delete Hotel</button>
     </div>
   
     <div *ngIf="!hotel">

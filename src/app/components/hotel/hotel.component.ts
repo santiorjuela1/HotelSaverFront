@@ -68,27 +68,6 @@ export class HotelComponent implements OnInit {
     });
   }
 
-  public deleteHotel() {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '250px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('entre al if');
-        
-        this.hotelService.deleteHotel(this.hotel.id).subscribe(
-          (params) =>{
-            console.log(params);
-            this.router.navigate(['/loginHotel']);
-          },
-          (error) =>{
-            console.error(error);
-            
-          }
-        )
-      }
-    });
-  }
 }
 
   

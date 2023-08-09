@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Cliente } from 'src/app/models/cliente';
 import { Reservation } from 'src/app/models/reservation';
@@ -27,7 +27,8 @@ export class ReservaComponent implements OnInit{
   constructor(private service : ReservationServiceService,
     private route : ActivatedRoute,
     private userService : UserServiceService,
-    private clientService : ClientServiceService){
+    private clientService : ClientServiceService,
+    private router : Router){
 }
 
 ngOnInit(): void {
@@ -116,6 +117,7 @@ public addCliente(){
            console.error('Error creating reservation:', error);
          }
        );
+       this.router.navigate(['/inicio']);
     }
   }
 

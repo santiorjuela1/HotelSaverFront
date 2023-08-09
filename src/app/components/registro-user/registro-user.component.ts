@@ -45,15 +45,15 @@ export class RegistroUserComponent {
           documento: parseInt(this.formUser.get('documento')?.value!),
           tipoDocumento: this.formUser.get('tipoDocumento')?.value || ''
         },
-        nombre: this.formUser.get('nombre')?.value,
-        correo: this.formUser.get('correo')?.value,
-        contrasena: this.formUser.get('contrasena')?.value,
-        telefono: this.formUser.get('telefono')?.value,
+        nombre: this.formUser.get('nombre')?.value!,
+        correo: this.formUser.get('correo')?.value!,
+        contrasena: this.formUser.get('contrasena')?.value!,
+        telefono: this.formUser.get('telefono')?.value!,
         resevations: []
       };
       this.service.createUser(user).subscribe(
         (response) => {
-          console.log(response);
+        console.log(response);
          this.redirectLogin()
         },
         (error) => {
