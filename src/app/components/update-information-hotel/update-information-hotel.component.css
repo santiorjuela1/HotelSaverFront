@@ -1,0 +1,48 @@
+.container {
+    width: 40%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-top: 80px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    justify-content: space-around;
+     padding: 8px;
+     background-color: #19d232;
+     color: #fff;
+     border: none;
+     border-radius: 3px;
+     cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #507e5d;
+  }
+
+  .cancelar-button{
+    margin-left: 10px;
+  }
+  

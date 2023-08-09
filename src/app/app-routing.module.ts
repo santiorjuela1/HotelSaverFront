@@ -9,6 +9,9 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { HotelComponent } from './components/hotel/hotel.component';
+import { UpdateInformationHotelComponent } from './components/update-information-hotel/update-information-hotel.component';
+import { UserComponent } from './components/user/user.component';
+import { UpdateInformationUserComponent } from './components/update-information-user/update-information-user.component';
 
 
 const routes: Routes = [
@@ -20,7 +23,10 @@ const routes: Routes = [
   { path: 'hoteles', component: HotelesComponent},
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'reserva', component: ReservaComponent},
-  { path: 'hotel', component: HotelComponent}
+  { path: 'hotel', component: HotelComponent},
+  { path: 'updateHotel', component: UpdateInformationHotelComponent},
+  { path: 'user', component : UserComponent},
+  { path: 'updateUser', component : UpdateInformationUserComponent}
 ];
 
 

@@ -20,6 +20,16 @@ import { ReservaComponent } from './components/reserva/reserva.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { UserComponent } from './components/user/user.component';
+import { PasswordPipePipe } from './pipes/password-pipe.pipe';
+import { UpdateInformationHotelComponent } from './components/update-information-hotel/update-information-hotel.component';
+import { DropdownuserComponent } from './components/dropdownuser/dropdownuser.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { GeneralToolbarComponent } from './components/general-toolbar/general-toolbar.component';
+import { UserToolBarComponent } from './components/user-tool-bar/user-tool-bar.component';
+import { UpdateInformationUserComponent } from './components/update-information-user/update-information-user.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -33,7 +43,14 @@ import { UserComponent } from './components/user/user.component';
     ReservaComponent,
     LoginUserComponent,
     HotelComponent,
-    UserComponent
+    UserComponent,
+    PasswordPipePipe,
+    UpdateInformationHotelComponent,
+    DropdownuserComponent,
+    GeneralToolbarComponent,
+    UserToolBarComponent,
+    UpdateInformationUserComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +64,9 @@ import { UserComponent } from './components/user/user.component';
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

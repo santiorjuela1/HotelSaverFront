@@ -5,14 +5,15 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ComunicationService {
-  public idSource = new Subject<String>();
-
-  id$ = this.idSource.asObservable();
+  selectedUserEmail: string = '';
 
   constructor() { }
 
-  public sendHotelID(id : string){
-    // Asignando el valor de idSource al id que recibimos
-    this.idSource.next(id);
+  setSelectedUserEmail(email: string) {
+    this.selectedUserEmail = email;
+  }
+
+  getSelectedUserEmail(): string {
+    return this.selectedUserEmail;
   }
 }

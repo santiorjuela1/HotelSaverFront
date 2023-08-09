@@ -1,0 +1,24 @@
+.toolbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #19d232;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .welcomeMessage {
+    margin-left: 5vh;
+  }
+  
+  .dropdown-container {
+    display: flex; /* Add this line */
+    align-items: center; /* Add this line */
+    margin-right: 5vh;
+  }
+  

@@ -1,0 +1,11 @@
+.container{
+    margin-right: 5vh;
+}
+
+.button{
+    box-shadow: none;
+    border: none;
+    background-color: #19d232;
+    color:white;
+    font-weight: 800;
+}

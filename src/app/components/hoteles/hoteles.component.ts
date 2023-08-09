@@ -19,9 +19,9 @@ export class HotelesComponent implements OnInit{
   correoUser !: string;
   HOTEL_DISPLAY_DATA: HotelDisplay[] = [];
   allHotels: Hotel[] = [];
+  
   constructor(
     private service: HotelServiceService,
-    private comunicacion: ComunicationService,
     private router: Router,
     private route : ActivatedRoute
   ) {
@@ -73,7 +73,6 @@ export class HotelesComponent implements OnInit{
   }
 
   public reservarHotel(id: string) {
-    this.comunicacion.sendHotelID(id);
     this.router.navigate(['/reserva'], {
       queryParams: { correoUser: this.correoUser , id: id }
     });

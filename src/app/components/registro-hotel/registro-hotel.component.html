@@ -1,3 +1,4 @@
+<app-general-toolbar></app-general-toolbar>
 <div class="container">
     <form class="registration-form" [formGroup]="formHotel" (ngSubmit)="initData()">
       <h2>Registro hotel</h2>
@@ -34,7 +35,7 @@
 
           <div class="form-group" id="derecha">
             <label for="telefono">Telefono:</label>
-            <input type="text" id="telefono" formControlName="telefono">
+            <input type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" id="telefono" formControlName="telefono">
             <div *ngIf="formHotel.get('telefono')?.invalid && (formHotel.get('telefono')?.dirty || formHotel.get('telefono')?.touched)">
               <div *ngIf="formHotel.get('telefono')?.errors?.['required']">Teléfono es requerido.</div>
               <div *ngIf="formHotel.get('telefono')?.errors?.['minlength']">El teléfono debe tener al menos 6 caracteres.</div>

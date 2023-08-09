@@ -1,1 +1,40 @@
-<p>hotel works!</p>
+<app-general-toolbar></app-general-toolbar>
+<div class="container">
+    <div *ngIf="hotel" class="hotel-profile">
+      <h2>Informacion del hotel</h2>
+      <p><strong>Nombre hotel:</strong> {{ hotel.nombre }}</p>
+      <p><strong>Direccion:</strong> {{ hotel.direccion }}</p>
+      <p><strong>Capacidad reserva:</strong> {{ hotel.capacidadReserva }}</p>
+      <p><strong>Telefono:</strong> {{ hotel.telefono }}</p>
+      <p><strong>Correo:</strong> {{ hotel.correo }}</p>
+      <p><strong>Numero de habitaciones:</strong> {{ hotel.numeroHabitaciones }}</p>
+      <p><strong>Precio por noche:</strong> {{ hotel.precioNoche }}</p>
+      <p><strong>Estrellas:</strong> {{ hotel.estrellas }}</p>
+      <p><strong>Contaseña:</strong> {{ hotel.contrasena | passwordPipe}}</p>
+  
+      <button class="button-update" (click)="updateHotel()">Update Hotel Information</button>
+      <button class="button-delete" (click)="deleteHotel()">Delete Hotel</button>
+    </div>
+  
+    <div *ngIf="!hotel">
+      <p>Loading hotel information...</p>
+    </div>
+  
+    <div *ngIf="reservations.length > 0" class="reservations">
+      <h2>Reservations</h2>
+      <ul>
+        <li *ngFor="let reservation of reservations">
+          <p><strong>Documento usuario:</strong> {{ reservation.reservationID.userID.documento }}</p>
+          <p><strong>Tipo documento usuario:</strong> {{ reservation.reservationID.userID.tipoDocumento }}</p>
+          <p><strong>Fecha de inicio:</strong> {{ reservation.fechaInicio }}</p>
+          <p><strong>Fecha final:</strong> {{ reservation.fechaFin }}</p>
+          <p><strong>Numero de habitaciones:</strong> {{ reservation.numeroHabitaciones }}</p>
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="reservations.length === 0" class="reservations">
+      <p>No reservations found.</p>
+    </div>
+  </div>
+  

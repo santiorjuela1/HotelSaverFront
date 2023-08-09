@@ -1,0 +1,7 @@
+<div class="toolbar" role="banner">
+    <span class="welcomeMessage">Hotel Saver especial</span>
+    <ng-container *ngIf="correoUser">
+      <app-dropdownuser [correoUser]="correoUser"></app-dropdownuser>
+    </ng-container>
+</div>
+  <router-outlet></router-outlet>

@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ReservationServiceService {
-  reservationUrl: string = 'http://localhost:8080/apiReservations/v1'; // Correct the URL with http://
-  
+  reservationUrl: string = 'http://localhost:8080/apiReservations/v1';
+
   constructor(private http: HttpClient) { }
 
   public createReservation(reservation: Reservation): Observable<Reservation> {
@@ -26,5 +26,16 @@ export class ReservationServiceService {
   public updateReservation(reservation: Reservation): Observable<Reservation> {
     return this.http.put<Reservation>(`${this.reservationUrl}/updateReservation`, reservation);
   }
-}
 
+  public getAllReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.reservationUrl}/getAllReservations`);
+  }
+
+  public getReservationsByHotelID(hotelID: string): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.reservationUrl}/getAllByHotelID/${hotelID}`);
+  }
+
+  public getAllByUserDocumento(documento: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.reservationUrl}/getAllByUserDocumento/${documento}`);
+  }
+}

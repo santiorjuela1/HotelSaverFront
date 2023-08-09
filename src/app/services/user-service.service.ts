@@ -8,32 +8,32 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserServiceService {
-  //public urlUser = environment.urlUser;
+  public urlUser = 'http://localhost:8080/apiUsers/v1';
 
   constructor(private http : HttpClient) { 
-
-  }
-  public createUser(user : any){
-    return this.http.post('http://localhost:8080/apiUsers/v1' + '/createUser', user);
   }
 
-  public getUser(documento : number, tipoDocumento : string){
-    return this.http.get('http://localhost:8080/apiUsers/v1' + '/getUser/${documento}/${tipoDocumento}');
+    public createUser(user: any): Observable<any> {
+      return this.http.post(`${this.urlUser}/createUser`, user);
+    }
+  
+    public getUser(documento: number, tipoDocumento: string): Observable<any> {
+      return this.http.get(`${this.urlUser}/getUser/${documento}/${tipoDocumento}`);
+    }
+  
+    public deleteUser(documento: number, tipoDocumento: string): Observable<any> {
+      return this.http.delete(`${this.urlUser}/deleteUser/${documento}/${tipoDocumento}`);
+    }
+  
+    public updateUser(user: User): Observable<any> {
+      return this.http.put(`${this.urlUser}/updateUser`, user);
+    }
+  
+    public getAllUsers(): Observable<User[]> {
+      return this.http.get<User[]>(`${this.urlUser}/getAllUsers`);
+    }
+  
+    public getUserByCorreo(correo: any): Observable<any> {
+      return this.http.get(`${this.urlUser}/getUserByCorreo/${correo}`);
+    }
   }
-
-  public deleteUser(documento : number, tipoDocumento : string){
-    return this.http.delete('http://localhost:8080/apiUsers/v1' + '/deleteUser/${documento}/${tipoDocumento}');
-  }
-
-  public updateUser(user : any){
-    return this.http.put('http://localhost:8080/apiUsers/v1' + '/updateUser', user);
-  }
-
-  public getAllUsers(): Observable<User[]>{
-    return this.http.get<User[]>('http://localhost:8080/apiUsers/v1' + '/getAllUsers');
-  }
-
-  public getUserByCorreo(correo: any) {
-    return this.http.get(`http://localhost:8080/apiUsers/v1/getUserByCorreo/${correo}`);
-  }
-}

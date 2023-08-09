@@ -35,7 +35,7 @@ export class RegistroUserComponent {
         console.log('correo exists');
         return;
       }
-      if (this.checkDocumento()) {
+      else if (this.checkDocumento()) {
         this.documentoExists = true;
         console.log('documento exists');
         return;

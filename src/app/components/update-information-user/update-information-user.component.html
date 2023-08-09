@@ -1,0 +1,23 @@
+<app-general-toolbar></app-general-toolbar>
+<div class="container">
+    <h2>Actualizar Informacion del Hotel</h2>
+    
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <label for="nombre">Nombre usuario:</label>
+      <input type="text" id="nombre" formControlName="nombre">
+    
+      
+      <label for="telefono">Telefono:</label>
+      <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" id="telefono" formControlName="telefono">
+      
+      <label for="correo">Correo:</label>
+      <input type="email" id="correo" formControlName="correo">
+      
+      
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" formControlName="contrasena">
+      
+      <button type="submit" class="update-button" >Actualizar Informacion</button>
+      <button type="button" class="cancelar-button">Cancelar</button>
+    </form>
+  </div>

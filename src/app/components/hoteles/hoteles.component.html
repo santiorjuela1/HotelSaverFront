@@ -1,4 +1,8 @@
-<div class="tabla">
+<div *ngIf="correoUser">
+  <app-user-tool-bar [correoUser]="correoUser"></app-user-tool-bar>
+</div>
+<div class="container">
+  <div class="tabla">
     <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
@@ -50,4 +54,6 @@
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
       </table>
+  </div> 
 </div>
+

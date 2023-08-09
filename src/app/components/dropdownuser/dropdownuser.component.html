@@ -1,0 +1,14 @@
+<div class="container">
+    <button class="button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="redirectToUser()" mat-menu-item>
+          <span>Perfil</span>
+        </button>
+        <button (click)="redirectToLoginUser()" mat-menu-item>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+</div>
+
